@@ -1,5 +1,6 @@
 language: generic
+dist: trusty
 script:
-  - file --version
+  - file --version || true
   - find . -not \( -path ./.git -prune \) -type f -exec file -N {} + > file.list
   - sed 's/^\.\/\(.*\):/\1:/;s/^.*\/\(.*\):/\1:/;/^[^:]*\..*:/{s/^.*\(\.[^.]*\):/\1:/;}' file.list | sort | uniq -c | sort -nr
