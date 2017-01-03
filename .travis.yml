@@ -1,5 +1,9 @@
 language: generic
 dist: trusty
+addons:
+  apt:
+    sources: debian-sid
+    packages: file
 script:
   - file --version || true
   - find . -not \( -path ./.git -prune \) -type f -exec file -N {} + > file.list
